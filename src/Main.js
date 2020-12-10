@@ -1,11 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, View} from 'react-native';
 import MapView from 'react-native-maps';
-//import {City, RestaurantDetail, SearchBar} from './components';
+import Axios from 'axios';
+import {City, RestaurantDetail, SearchBar} from './components';
+import {mainPageStyle} from './styles';
 
 const Main = (props) => {
+  const [cityList, setCityList] = useState([]);
+
+  // const fetchCities = async () => {
+  //   const response = await Axios.get(
+  //     'https://worldwide-restaurants.p.rapidapi.com/photos',
+  //   );
+  //   console.log(response.data);
+  // };
+
+  // useEffect(() => {
+  //   fetchCities();
+  // }, []);
+
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#e6e6e6'}}>
       <View style={{flex: 1}}>
         <MapView
           style={{flex: 1}}
@@ -17,7 +32,9 @@ const Main = (props) => {
           }}
         />
       </View>
-      {/* <SearchBar /> */}
+      <View style={mainPageStyle.absoluteView}>
+        <SearchBar />
+      </View>
     </SafeAreaView>
   );
 };
